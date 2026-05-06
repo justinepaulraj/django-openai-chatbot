@@ -5,17 +5,27 @@
 {% block content %}
 
 <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <h5>Conversations</h5>
+        <div id="sidebar">
+            {% include "chatbot/chat_partial.html" %}
+        </div>
+    </div>
+
     <!-- Chat area -->
-    <div class="col-md-12">
-        <h3>{{ current_conversation.title }}!</h3>
+    <div class="col-md-9">
+        {% if current_conversation %}
+            <h3>{{ current_conversation.title }}!</h3>
+        {% else %}
+            <h3>New Conversation</h3>
+        {% endif %}
         
         <ul class="list-group">
             {% for msg in messages %}
                 <li class="list-group-item {% if msg.role == 'assistant' %}list-group-item-secondary{% else %}list-group-item-light{% endif %}">
                     <strong>{{ msg.role|capfirst }}:</strong> {{ msg.content }}
                 </li>
-            {% empty %}
-                <li class="list-group-item">No messages yet.</li>
             {% endfor %}
         </ul>
         <hr>
