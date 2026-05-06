@@ -4,6 +4,29 @@
 
 {% block content %}
 
-<h3>Welcome, {{ user.username }}!</h3>
+<div class="row">
+    <!-- Chat area -->
+    <div class="col-md-12">
+        <h3>{{ current_conversation.title }}!</h3>
+        
+        <ul class="list-group">
+            {% for msg in messages %}
+                <li class="list-group-item {% if msg.role == 'assistant' %}list-group-item-secondary{% else %}list-group-item-light{% endif %}">
+                    <strong>{{ msg.role|capfirst }}:</strong> {{ msg.content }}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No messages yet.</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="user_question" class="form-control" placeholder="Type your message here">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
