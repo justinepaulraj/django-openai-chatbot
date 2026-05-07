@@ -29,14 +29,29 @@
             {% endfor %}
         </ul>
         <hr>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-group">
+                <label class="input-group-text btn btn-secondary" for="document_file">+</label>
+                <input type="file" name="document_file" id="document_file" class="d-none">
                 <input type="text" name="user_question" class="form-control" placeholder="Type your message here">
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    const fileInput = document.getElementById('document_file');
+    const userInput = document.querySelector('input[name="user_question"]');
+
+    fileInput.addEventListener('change', function() {
+        if (fileInput.files.length > 0) {
+            userInput.placeholder = `Type your question here (File: ${fileInput.files[0].name})`;
+        } else {
+            userInput.placeholder = "Type your message here";
+        }
+    });
+</script>
 
 {% endblock %}

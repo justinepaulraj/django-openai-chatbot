@@ -128,3 +128,7 @@ LOGOUT_REDIRECT_URL = 'login'
 
 # OpenAI
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
