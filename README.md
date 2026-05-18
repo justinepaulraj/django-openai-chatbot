@@ -1,5 +1,7 @@
 # Django OpenAI Chatbot
 
+An AI chatbot built with Django and OpenAI where you can have text conversations or upload a document and ask questions about it.
+
 ## Features
 
 - **User Authentication:** secure sign-up, login, and logout functionality
@@ -23,4 +25,87 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=fff)
 ![HTMX](https://img.shields.io/badge/HTMX-36C?logo=htmx&logoColor=fff)
 
+## Getting Started
+
+### Prerequisites
+
+- Python 3.12+
+- Git
+- An OpenAI API key — get one at [platform.openai.com](https://platform.openai.com)
+
+### Installation
+
+1. Clone the repository
+  ```bash
+  git clone https://github.com/justinepaulraj/django-openai-chatbot.git
+  cd django-openai-chatbot
+  ```
+
+2. Create and activate a virtual environment
+  ```bash
+  python -m venv .venv
+  # Windows
+  .venv\Scripts\activate
+  # Mac/Linux
+  source .venv/bin/activate
+  ```
+
+3. Install dependencies
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### Environment Variables
+
+Create a `.env` file at the project root and add:
+
+```env
+OPENAI_API_KEY=your-openai-api-key
+SECRET_KEY=your-django-secret-key
+```
+
+### Run
+
+```bash
+python manage.py migrate
+python manage.py runserver
+```
+
+Visit `http://127.0.0.1:8000`
+
 ## Project Structure
+
+```
+django-openai-chatbot/
+├── chatbot/                         # Main application
+│   ├── templates/
+│   │   └── chatbot/
+│   │       ├── base.html            # Base template
+│   │       ├── login.html           # Login page
+│   │       ├── signup.html          # Signup page
+│   │       ├── chat.html            # Main chat interface
+│   │       └── chat_partial.html    # Sidebar partial
+│   ├── admin.py                     # Admin configuration
+│   ├── apps.py                      # App configuration
+│   ├── forms.py                     # Django forms
+│   ├── models.py                    # Database models
+│   ├── tests.py                     # Unit tests
+│   ├── urls.py                      # App URL configuration
+│   └── views.py                     # View logic
+├── config/                          # Django project configuration
+│   ├── settings.py                  # Project settings
+│   ├── urls.py                      # Root URL configuration
+│   ├── wsgi.py                      # WSGI entry point
+│   └── asgi.py                      # ASGI entry point
+├── .env                             # Environment variables (not tracked)
+├── .gitignore
+├── manage.py                        # Django management script
+├── README.md
+└── requirements.txt                 # Python dependencies
+```
+
+## Contact
+
+**Justine Paulraj**
+- Email: [justine.paulraj@outlook.com](mailto:justine.paulraj@outlook.com)
+- LinkedIn: [linkedin.com/in/justinepaulraj](https://linkedin.com/in/justinepaulraj)
